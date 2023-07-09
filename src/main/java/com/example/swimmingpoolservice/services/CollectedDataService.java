@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,18 +17,17 @@ public class CollectedDataService {
     private CollectedDataRepository collectedDataRepository;
     private CollectDataUtil collectDataUtil;
 
-
     public CollectedDataService(CollectedDataRepository collectedDataRepository, CollectDataUtil collectDataUtil) {
         this.collectedDataRepository = collectedDataRepository;
         this.collectDataUtil = collectDataUtil;
     }
 
     public CollectedData mapperStringListToCollectedDataList(CollectDataUtil collectDataUtil) throws IOException {
-        List<String> fileterdDatainString = collectDataUtil.displayFileteredInformation();
-        String amountPeopleAtPool = fileterdDatainString.get(0);
-        String amountOfFreeSpotsAtPool = fileterdDatainString.get(1);
-        String amountPeopleAtSpa = fileterdDatainString.get(2);
-        String amountOfFreeSpotsAtSpa = fileterdDatainString.get(3);
+        List<String> filteredDataInString = collectDataUtil.displayFilteredInformation();
+        String amountPeopleAtPool = filteredDataInString.get(0);
+        String amountOfFreeSpotsAtPool = filteredDataInString.get(1);
+        String amountPeopleAtSpa = filteredDataInString.get(2);
+        String amountOfFreeSpotsAtSpa = filteredDataInString.get(3);
 
         CollectedData collectedData = new CollectedData();
         collectedData.setAmountPeopleAtPool(Integer.valueOf(amountPeopleAtPool));
@@ -51,7 +49,7 @@ public class CollectedDataService {
         return collectedDataRepository.findAll();
     }
 
-    public List<CollectedDataDTO> collectedDTO() {
+    public List<CollectedDataDTO> getCollectedDataInHour() {
         return collectedDataRepository.getCollectedDataInHour();
     }
 
@@ -59,12 +57,8 @@ public class CollectedDataService {
         return collectedDataRepository.fetchDTOOverASpecifiedPeriodOfTime(dateStart, dateEnd);
     }
 
-    public List<CollectedDataDTO> fetchDTOOverASpecifiedPeriodOfTimeBODY(ZonedDateTime dateStart, ZonedDateTime dateEnd) {
+    public List<CollectedDataDTO> fetchDtoOverASpecifiedPeriod(ZonedDateTime dateStart, ZonedDateTime dateEnd) {
         return collectedDataRepository.fetchDTOOverASpecifiedPeriodOfTimeBODY(dateStart, dateEnd);
     }
 
-    public List<CollectedDataDTO> findLastData(PageRequest of) {
-        List<CollectedDataDTO> list = collectedDataRepository.findFirstByOOrderByDownloadDate(PageRequest.of(0, 1));
-        return list;
-    }
 }

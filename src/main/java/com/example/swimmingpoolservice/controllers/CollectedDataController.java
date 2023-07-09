@@ -5,40 +5,39 @@ import com.example.swimmingpoolservice.controllers.dto.ZonedDateTimeRequest;
 import com.example.swimmingpoolservice.data.models.CollectedData;
 import com.example.swimmingpoolservice.services.CollectedDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CollectedDataController {
     @Autowired
     private CollectedDataService collectedDataService;
 
-    @GetMapping("/n")
-    public List<CollectedData> findAllRentedInventory() {
+    @GetMapping("/data/all")
+    public List<CollectedData> findAllData() {
         return collectedDataService.findAll();
     }
 
-    @GetMapping("/DTO")
-    public List<CollectedDataDTO> collectedDTO() {
-        return collectedDataService.collectedDTO();
+    @GetMapping("/data/hour")
+    public List<CollectedDataDTO> getCollectedDataInHour() {
+        return collectedDataService.getCollectedDataInHour();
     }
 
-    @PostMapping("/DTO_Peroid_of_TimeBODY")
-    public List<CollectedDataDTO> fetchDTOOverASpecifiedPeriodOfTimeBODY(@RequestBody ZonedDateTimeRequest zonedDateTimeRequest) {
-
-        return collectedDataService.fetchDTOOverASpecifiedPeriodOfTimeBODY(zonedDateTimeRequest.getDateFrom(), zonedDateTimeRequest.getDateTo());
+    @PostMapping("/data/period")
+    public List<CollectedDataDTO> fetchDtoOverASpecifiedPeriod(@RequestBody ZonedDateTimeRequest zonedDateTimeRequest) {
+        return collectedDataService.fetchDtoOverASpecifiedPeriod(zonedDateTimeRequest.getDateFrom(), zonedDateTimeRequest.getDateTo());
     }
 
-    @GetMapping("/last_Data")
-    public List<CollectedDataDTO> findLastData() {
-        List<CollectedDataDTO> list = collectedDataService.findLastData(PageRequest.of(0, 1));
-        if (list.isEmpty()) {
-            return null;
-        } else {
-            return list;
-        }
-    }
+//    @GetMapping("/api/")
+//    public List<CollectedDataDTO> findLastData() {
+//        List<CollectedDataDTO> list = collectedDataService.findLastData(PageRequest.of(0, 1));
+//        if (list.isEmpty()) {
+//            return null;
+//        } else {
+//            return list;
+//        }
+//    }
 }
