@@ -34,9 +34,9 @@ public interface CollectedDataRepository extends JpaRepository<CollectedData, Lo
             "WHERE + C.downloadDate>:dateStart AND C.downloadDate<:dateEnd")
     List<CollectedDataDTO> fetchDTOOverASpecifiedPeriodOfTimeBODY(ZonedDateTime dateStart, ZonedDateTime dateEnd);
 
-    @Query(value = "SELECT new com.example.swimmingpoolservice.controllers.dto.CollectedDataDTO( C.amountPeopleAtPool, C.amountOfFreeSpotsAtPool, C.amountPeopleAtSpa, C.amountOfFreeSpotsAtSpa, C.downloadDate)" +
-            "FROM CollectedData AS C " +
-            "ORDER BY C.downloadDate DESC")
-    List<CollectedDataDTO> findFirstByOOrderByDownloadDate(Pageable pageable);
+//    @Query(value = "SELECT new com.example.swimmingpoolservice.controllers.dto.CollectedDataDTO( C.amountPeopleAtPool, C.amountOfFreeSpotsAtPool, C.amountPeopleAtSpa, C.amountOfFreeSpotsAtSpa, C.downloadDate)" +
+//            "FROM CollectedData AS C " +
+//            "ORDER BY C.downloadDate DESC")
+//    List<CollectedDataDTO> findFirstByOOrderByDownloadDate(Pageable pageable);
 
 }

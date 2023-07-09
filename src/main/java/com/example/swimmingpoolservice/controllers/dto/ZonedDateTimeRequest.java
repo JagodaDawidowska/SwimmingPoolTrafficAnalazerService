@@ -12,5 +12,4 @@ import java.time.ZonedDateTime;
 public class ZonedDateTimeRequest {
     private ZonedDateTime dateFrom;
     private ZonedDateTime dateTo;
-
 }

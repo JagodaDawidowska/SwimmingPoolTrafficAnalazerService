@@ -15,11 +15,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableScheduling
 public class SwimmingpoolServiceApplication {
-
-
-
     public static void main(String[] args) throws IOException {
         SpringApplication.run(SwimmingpoolServiceApplication.class, args);
     }
-
 }

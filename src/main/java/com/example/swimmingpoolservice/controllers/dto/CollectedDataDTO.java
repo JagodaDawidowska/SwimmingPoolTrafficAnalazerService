@@ -9,7 +9,6 @@ public class CollectedDataDTO {
     private Integer amountOfFreeSpotsAtPool;
     private Integer amountPeopleAtSpa;
     private Integer amountOfFreeSpotsAtSpa;
-
     private ZonedDateTime downloadDate;
 
     public CollectedDataDTO() {

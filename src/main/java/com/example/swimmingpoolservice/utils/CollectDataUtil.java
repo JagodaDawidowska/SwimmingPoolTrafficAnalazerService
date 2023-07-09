@@ -2,8 +2,6 @@ package com.example.swimmingpoolservice.utils;
 
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,10 +11,9 @@ import java.util.List;
 
 @Component
 public class CollectDataUtil {
-
     private final static String url = "https://www.mosir.zgora.pl";
 
-    public List<String> displayFileteredInformation() throws IOException {
+    public List<String> displayFilteredInformation() throws IOException {
 
         URL oracle = new URL(url);
         BufferedReader in = new BufferedReader(
@@ -33,8 +30,7 @@ public class CollectDataUtil {
         in.close();
 
         List<String> list = findInformation(content);
-        List<String> cleanStringList = chceckIfContainsNumber(list);
-        return cleanStringList;
+        return checkIfContainsNumber(list);
     }
 
     public static List<String> findInformation(String content) {
@@ -52,8 +48,7 @@ public class CollectDataUtil {
         return list;
     }
 
-
-    public static List<String> chceckIfContainsNumber(List<String> list) {
+    public static List<String> checkIfContainsNumber(List<String> list) {
         List<String> stringList = new ArrayList<>();
         List<String> newList = new ArrayList<>();
         for (String s : list) {
@@ -67,11 +62,10 @@ public class CollectDataUtil {
             stringList.add(String.valueOf(sb));
         }
 
-        for (int i = 0; i < stringList.size(); i++) {
-            String newString = stringList.get(i).substring(1);
+        for (String s : stringList) {
+            String newString = s.substring(1);
             newList.add(newString);
         }
-        System.out.println(newList);
         return newList;
     }
 }
