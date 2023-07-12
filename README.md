@@ -26,12 +26,12 @@ This backend includes:
 
 ## Features
 The functionalities the application fulfills: 
-- feature to present all the collected data.
-- feature in progress - to present data from a period specified by the user.
-- feature to present data for the swimming pool/SPA within the current hour.
-- feature to present data for the swimming pool/SPA within the current day.
-- feature in progress - to present a chart with average data from the entire week.
-- feature to present the current data.
+- feature to present all the collected data
+- feature in progress - to present data from a period specified by the user
+- feature to present data for the swimming pool/SPA within the current hour
+- feature to present data for the swimming pool/SPA within the current day
+- feature in progress - to present a chart with average data from the entire week
+- feature to present the current data
 
 ## Project Status
 Project is: In progress
